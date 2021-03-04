@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_codigo_components/constants.dart';
 import 'package:flutter_codigo_components/pages/alerts_page.dart';
+import 'package:flutter_codigo_components/pages/avatar_page.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -36,7 +37,7 @@ class HomePage extends StatelessWidget {
                   subtitle: "Aquí irá el módulo de alertas",
                   icon: Icons.person,
                   onTap: (){
-                    print("Presionaste al avatar...");
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => AvatarPage()));
                   },
                 ),
               ],
