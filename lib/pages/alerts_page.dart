@@ -1,25 +1,42 @@
 import 'package:flutter/material.dart';
 
 class AlertPage extends StatelessWidget {
-
-  void showAlert(BuildContext saltado){
+  void showAlert(BuildContext context) {
     showDialog(
-      context: saltado,
-      builder: (saltado){
-        return AlertDialog(
-          title: Text("Aquí va el título"),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              FlutterLogo(
-                size: 100,
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(24),
+            ),
+            title: Text("Aquí va el título"),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                FlutterLogo(
+                  size: 100,
+                ),
+                Text("Contenido del alert"),
+              ],
+            ),
+            actions: [
+              FlatButton(
+                onPressed: () {
+                  Navigator.pop(context);
+
+                },
+                child: Text("Cancelar"),
+
               ),
-              Text("Contenido del alert"),
+              FlatButton(
+                onPressed: () {
+
+                },
+                child: Text("Okay"),
+              ),
             ],
-          ),
-        );
-      }
-    );
+          );
+        });
   }
 
   @override
@@ -30,7 +47,7 @@ class AlertPage extends StatelessWidget {
       ),
       body: Center(
         child: RaisedButton(
-          onPressed: (){
+          onPressed: () {
             showAlert(lomito);
           },
           child: Text("Mostrar alerta!"),
@@ -38,6 +55,4 @@ class AlertPage extends StatelessWidget {
       ),
     );
   }
-
-
 }
