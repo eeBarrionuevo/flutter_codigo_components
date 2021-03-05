@@ -3,6 +3,7 @@ import 'package:flutter_codigo_components/constants.dart';
 import 'package:flutter_codigo_components/pages/alerts_page.dart';
 import 'package:flutter_codigo_components/pages/avatar_page.dart';
 import 'package:flutter_codigo_components/pages/card_page.dart';
+import 'package:flutter_codigo_components/pages/input_page.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -47,6 +48,14 @@ class HomePage extends StatelessWidget {
                   icon: Icons.image_rounded,
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context) => CardPage()));
+                  },
+                ),
+                ItemMenuWidget(
+                  title: "Inputs",
+                  subtitle: "Aquí irá el módulo de inputs",
+                  icon: Icons.input,
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => InputPage()));
                   },
                 ),
               ],
