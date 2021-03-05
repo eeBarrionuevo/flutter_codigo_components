@@ -6,10 +6,20 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-
   int cantidad = 0;
   bool visiblePassword = true;
   TextEditingController matasquita = TextEditingController();
+
+  List<String> superHeroes = [
+    "Batman",
+    "Superman",
+    "Wonder Woman",
+    "Flash",
+    "Cybor",
+    "Aquaman"
+  ];
+
+  String auxiliar = "Hola 2";
 
   @override
   Widget build(BuildContext context) {
@@ -29,37 +39,62 @@ class _InputPageState extends State<InputPage> {
             height: 20.0,
           ),
           inputPassword(),
-
           SizedBox(
             height: 20.0,
           ),
-
-          TextField(
-            controller: matasquita,
-            enableInteractiveSelection: false,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(15.0)
+          inputDate(context),
+          SizedBox(
+            height: 20.0,
+          ),
+          DropdownButton<String>(
+            items: [
+              DropdownMenuItem(
+                child: Icon(Icons.account_circle),
+                value: "Hola",
               ),
-              labelText: "Fecha de nacimiento",
-              hintText: "Ingrese su fecha de nacimiento",
-              suffixIcon: Icon(Icons.date_range)
-            ),
-            onTap: (){
-              FocusScope.of(context).requestFocus(FocusNode());
-              print("Abrir date...");
-              selectDate(context);
+              DropdownMenuItem(
+                child: Text("Hola 2123132"),
+                value: "Hola 2",
+              ),
+              DropdownMenuItem(
+                child: Text("Hola 3"),
+                value: "Hola 3",
+              ),
+              DropdownMenuItem(
+                child: Text("Hola 4"),
+                value: "Hola 4",
+              )
+            ],
+            value: auxiliar,
+            onChanged: (String value) {
+              auxiliar = value;
+              setState(() {
+              });
             },
           ),
-
-
         ],
       ),
     );
   }
 
+  Widget inputDate(BuildContext context) {
+    return TextField(
+      controller: matasquita,
+      enableInteractiveSelection: false,
+      decoration: InputDecoration(
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(15.0)),
+          labelText: "Fecha de nacimiento",
+          hintText: "Ingrese su fecha de nacimiento",
+          suffixIcon: Icon(Icons.date_range)),
+      onTap: () {
+        FocusScope.of(context).requestFocus(FocusNode());
+        print("Abrir date...");
+        selectDate(context);
+      },
+    );
+  }
 
-  selectDate(BuildContext mandarina) async{
+  selectDate(BuildContext mandarina) async {
     DateTime picked = await showDatePicker(
       context: mandarina,
       initialDate: DateTime.now(),
@@ -67,78 +102,67 @@ class _InputPageState extends State<InputPage> {
       lastDate: DateTime(2023),
     );
 
-    if(picked != null){
+    if (picked != null) {
       matasquita.text = picked.toString();
     }
-
-
   }
-
-
 
   Widget inputPassword() {
     return TextField(
-          obscureText: visiblePassword,
-          decoration: InputDecoration(
-            // icon: Icon(Icons.mail),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(15.0),
-              ),
-              suffixIcon: IconButton(
-                icon: visiblePassword == true ? Icon(Icons.remove_red_eye_outlined) : Icon(Icons.remove_red_eye),
-                onPressed: (){
-                  visiblePassword = !visiblePassword;
-                  setState(() {
-
-                  });
-                },
-              ),
-              labelText: "Contraseña",
-              hintText: "Ingrese su contraseña",
-              helperText: "Ingrese un contraseña válida"
+      obscureText: visiblePassword,
+      decoration: InputDecoration(
+          // icon: Icon(Icons.mail),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15.0),
           ),
-        );
+          suffixIcon: IconButton(
+            icon: visiblePassword == true
+                ? Icon(Icons.remove_red_eye_outlined)
+                : Icon(Icons.remove_red_eye),
+            onPressed: () {
+              visiblePassword = !visiblePassword;
+              setState(() {});
+            },
+          ),
+          labelText: "Contraseña",
+          hintText: "Ingrese su contraseña",
+          helperText: "Ingrese un contraseña válida"),
+    );
   }
 
   Widget inputMail() {
     return TextField(
-          keyboardType: TextInputType.emailAddress,
-          decoration: InputDecoration(
-            // icon: Icon(Icons.mail),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15.0),
-            ),
-            suffixIcon: Icon(Icons.mail),
-            labelText: "Correo electrónico",
-            hintText: "Ingrese su correo electrónico",
-            helperText: "Ingrese un correo electrónico válido"
+      keyboardType: TextInputType.emailAddress,
+      decoration: InputDecoration(
+          // icon: Icon(Icons.mail),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15.0),
           ),
-        );
+          suffixIcon: Icon(Icons.mail),
+          labelText: "Correo electrónico",
+          hintText: "Ingrese su correo electrónico",
+          helperText: "Ingrese un correo electrónico válido"),
+    );
   }
 
   Widget inputSimple() {
     return TextField(
-          decoration: InputDecoration(
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15.0)
-            ),
-            // icon: Icon(Icons.account_circle),
-            suffixIcon: Icon(Icons.person),
-            labelText: "Usuario",
-            hintText: "Ingrese su usuario...",
-            helperText: "Tus datos son confidenciales",
-            counter: Text("Cant. letras: $cantidad")
-          ),
-          onTap: (){
-            print("Hiciste tap en el input");
-          },
-          onChanged: (String value){
-            print(value.length);
-            cantidad = value.length;
-            setState(() {
-
-            });
-          },
-        );
+      decoration: InputDecoration(
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(15.0)),
+          // icon: Icon(Icons.account_circle),
+          suffixIcon: Icon(Icons.person),
+          labelText: "Usuario",
+          hintText: "Ingrese su usuario...",
+          helperText: "Tus datos son confidenciales",
+          counter: Text("Cant. letras: $cantidad")),
+      onTap: () {
+        print("Hiciste tap en el input");
+      },
+      onChanged: (String value) {
+        print(value.length);
+        cantidad = value.length;
+        setState(() {});
+      },
+    );
   }
 }
