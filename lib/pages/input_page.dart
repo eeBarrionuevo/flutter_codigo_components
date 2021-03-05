@@ -19,7 +19,7 @@ class _InputPageState extends State<InputPage> {
     "Aquaman"
   ];
 
-  String auxiliar = "Hola 2";
+  String auxiliar = "Batman";
 
   @override
   Widget build(BuildContext context) {
@@ -46,36 +46,40 @@ class _InputPageState extends State<InputPage> {
           SizedBox(
             height: 20.0,
           ),
-          DropdownButton<String>(
-            items: [
-              DropdownMenuItem(
-                child: Icon(Icons.account_circle),
-                value: "Hola",
-              ),
-              DropdownMenuItem(
-                child: Text("Hola 2123132"),
-                value: "Hola 2",
-              ),
-              DropdownMenuItem(
-                child: Text("Hola 3"),
-                value: "Hola 3",
-              ),
-              DropdownMenuItem(
-                child: Text("Hola 4"),
-                value: "Hola 4",
-              )
-            ],
-            value: auxiliar,
-            onChanged: (String value) {
-              auxiliar = value;
-              setState(() {
-              });
-            },
-          ),
+          buildDropdown(),
         ],
       ),
     );
   }
+
+  DropdownButton<String> buildDropdown() {
+    return DropdownButton<String>(
+          items: getItemsDrowdown(),
+          value: auxiliar,
+          onChanged: (String value) {
+            auxiliar = value;
+            setState(() {
+            });
+          },
+        );
+  }
+
+  List<DropdownMenuItem<String>> getItemsDrowdown(){
+
+    List<DropdownMenuItem<String>> federica = [];
+
+    superHeroes.forEach((element) {
+        federica.add(
+          DropdownMenuItem(
+            child: Text(element),
+            value: element,
+          ),
+        );
+    });
+    return federica;
+  }
+
+
 
   Widget inputDate(BuildContext context) {
     return TextField(
