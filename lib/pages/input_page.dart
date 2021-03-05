@@ -6,7 +6,10 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+
   int cantidad = 0;
+  bool visiblePassword = true;
+  TextEditingController matasquita = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -25,22 +28,76 @@ class _InputPageState extends State<InputPage> {
           SizedBox(
             height: 20.0,
           ),
+          inputPassword(),
+
+          SizedBox(
+            height: 20.0,
+          ),
+
           TextField(
-            obscureText: true,
+            controller: matasquita,
+            enableInteractiveSelection: false,
             decoration: InputDecoration(
-              // icon: Icon(Icons.mail),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15.0),
-                ),
-                suffixIcon: Icon(Icons.remove_red_eye_outlined),
-                labelText: "Contraseña",
-                hintText: "Ingrese su contraseña",
-                helperText: "Ingrese un contraseña válida"
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(15.0)
+              ),
+              labelText: "Fecha de nacimiento",
+              hintText: "Ingrese su fecha de nacimiento",
+              suffixIcon: Icon(Icons.date_range)
             ),
-          )
+            onTap: (){
+              FocusScope.of(context).requestFocus(FocusNode());
+              print("Abrir date...");
+              selectDate(context);
+            },
+          ),
+
+
         ],
       ),
     );
+  }
+
+
+  selectDate(BuildContext mandarina) async{
+    DateTime picked = await showDatePicker(
+      context: mandarina,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2023),
+    );
+
+    if(picked != null){
+      matasquita.text = picked.toString();
+    }
+
+
+  }
+
+
+
+  Widget inputPassword() {
+    return TextField(
+          obscureText: visiblePassword,
+          decoration: InputDecoration(
+            // icon: Icon(Icons.mail),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+              suffixIcon: IconButton(
+                icon: visiblePassword == true ? Icon(Icons.remove_red_eye_outlined) : Icon(Icons.remove_red_eye),
+                onPressed: (){
+                  visiblePassword = !visiblePassword;
+                  setState(() {
+
+                  });
+                },
+              ),
+              labelText: "Contraseña",
+              hintText: "Ingrese su contraseña",
+              helperText: "Ingrese un contraseña válida"
+          ),
+        );
   }
 
   Widget inputMail() {
