@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_codigo_components/constants.dart';
 import 'package:flutter_codigo_components/pages/alerts_page.dart';
 import 'package:flutter_codigo_components/pages/avatar_page.dart';
+import 'package:flutter_codigo_components/pages/card_page.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -38,6 +39,14 @@ class HomePage extends StatelessWidget {
                   icon: Icons.person,
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context) => AvatarPage()));
+                  },
+                ),
+                ItemMenuWidget(
+                  title: "Cards",
+                  subtitle: "Aquí irá el módulo de cards",
+                  icon: Icons.image_rounded,
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => CardPage()));
                   },
                 ),
               ],
