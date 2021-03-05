@@ -25,7 +25,19 @@ class _InputPageState extends State<InputPage> {
           SizedBox(
             height: 20.0,
           ),
-
+          TextField(
+            obscureText: true,
+            decoration: InputDecoration(
+              // icon: Icon(Icons.mail),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+                suffixIcon: Icon(Icons.remove_red_eye_outlined),
+                labelText: "Contraseña",
+                hintText: "Ingrese su contraseña",
+                helperText: "Ingrese un contraseña válida"
+            ),
+          )
         ],
       ),
     );
@@ -37,12 +49,12 @@ class _InputPageState extends State<InputPage> {
           decoration: InputDecoration(
             // icon: Icon(Icons.mail),
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15.0)
+              borderRadius: BorderRadius.circular(15.0),
             ),
             suffixIcon: Icon(Icons.mail),
             labelText: "Correo electrónico",
             hintText: "Ingrese su correo electrónico",
-            helperText: "Ingres un correo electrónico válido"
+            helperText: "Ingrese un correo electrónico válido"
           ),
         );
   }
