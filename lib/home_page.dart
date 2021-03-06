@@ -4,6 +4,7 @@ import 'package:flutter_codigo_components/pages/alerts_page.dart';
 import 'package:flutter_codigo_components/pages/avatar_page.dart';
 import 'package:flutter_codigo_components/pages/card_page.dart';
 import 'package:flutter_codigo_components/pages/input_page.dart';
+import 'package:flutter_codigo_components/pages/slider_page.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -56,6 +57,14 @@ class HomePage extends StatelessWidget {
                   icon: Icons.input,
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context) => InputPage()));
+                  },
+                ),
+                ItemMenuWidget(
+                  title: "Slider",
+                  subtitle: "Aquí irá el módulo de slider",
+                  icon: Icons.imagesearch_roller,
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => SliderPage()));
                   },
                 ),
               ],
