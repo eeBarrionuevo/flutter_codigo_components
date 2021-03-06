@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_codigo_components/constants.dart';
 import 'package:flutter_codigo_components/pages/alerts_page.dart';
+import 'package:flutter_codigo_components/pages/animation_page.dart';
 import 'package:flutter_codigo_components/pages/avatar_page.dart';
 import 'package:flutter_codigo_components/pages/card_page.dart';
 import 'package:flutter_codigo_components/pages/input_page.dart';
@@ -65,6 +66,14 @@ class HomePage extends StatelessWidget {
                   icon: Icons.imagesearch_roller,
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context) => SliderPage()));
+                  },
+                ),
+                ItemMenuWidget(
+                  title: "Animation",
+                  subtitle: "Aquí irá el módulo de animaciones",
+                  icon: Icons.animation,
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => AnimationPage()));
                   },
                 ),
               ],
