@@ -13,6 +13,7 @@ class _AnimationPageState extends State<AnimationPage> {
   double _width = 50;
   double _height = 50;
   double _borderRadius = 20.0;
+  Color _color = Colors.greenAccent;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class _AnimationPageState extends State<AnimationPage> {
           height: _width,
           width: _height,
           decoration: BoxDecoration(
-            color: Colors.greenAccent,
+            color: _color,
             borderRadius: BorderRadius.circular(_borderRadius),
           ),
         ),
@@ -41,6 +42,14 @@ class _AnimationPageState extends State<AnimationPage> {
           _width = random.nextInt(300).toDouble();
           _height = random.nextInt(300).toDouble();
           _borderRadius = random.nextInt(200).toDouble();
+
+          _color = Color.fromRGBO(
+            random.nextInt(256),
+            random.nextInt(256),
+            random.nextInt(256),
+            1
+          );
+
           setState(() {
 
           });
